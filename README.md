@@ -1,8 +1,10 @@
 # TRISTAN
 This code will control the linear actuators on board the first iteration of the TRISTAN payload.
-
+ 
 
 Changelog:
+
+2025/04/12 01:00 AM - Implemented abilty to trigger actuators based on external wireless input (based on Conor's bluetooth switch code)
 
 2025/03/28 10:00 PM - Implemented ability to trigger the actuators based on external wired input using AA batteries (with noise resistance). Still need to test with the fluctus.
 
