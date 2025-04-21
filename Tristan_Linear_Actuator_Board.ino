@@ -32,6 +32,10 @@ void setup() {
 
   // Initialize BLE
   setupBLE();
+
+  extendMotors();
+  delay(10000);
+  stopMotors();
 }
 
 void loop() {
@@ -58,7 +62,7 @@ void loop() {
 
   /// Rules to check if it's time to stop extending or retracting the actuators
   if (actuateStatus == 1 && secondsSince > 15) {
-    retractMotors();
+    stopMotors();
   } else if (actuateStatus == -1 && secondsSince > 8) {
     stopMotors();
   }
@@ -68,6 +72,7 @@ void loop() {
 void extendMotors() {
   actuateStatus = 1;
   milliSecondCount = millis();
+  arm();
   
   digitalWrite(MOTOR1, 1);
   digitalWrite(MOTOR2, 0);

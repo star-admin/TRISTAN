@@ -59,6 +59,12 @@ class MyServerCallbacks : public BLEServerCallbacks {
   }
 };
 
+// Arm function (because IDE is complaining about variable not being defined in scope)
+void arm() {
+  deviceArmed = true;
+  updateArmedCharacteristic();
+}
+
 // Disarm function (because IDE is complaining about variable not being defined in scope)
 void disarm() {
   deviceArmed = false;
@@ -129,13 +135,13 @@ void connectionsCheck() {
 // Function to setup BLE
 void setupBLE() {
   // Load preferences
-  preferences.begin("ble-switch", false); // Open namespace "ble-switch" in read/write mode
-  deviceArmed = preferences.getBool("armed", false); // Load arming state from flash (default: false)
+  // preferences.begin("ble-switch", false); // Open namespace "ble-switch" in read/write mode
+  deviceArmed =  true; ///preferences.getBool("armed", false); // Load arming state from flash (default: false)
   Serial.print("[DEBUG] Loaded arming state from flash: ");
   Serial.println(deviceArmed ? "ARMED" : "DISARMED");
   
   // Create BLE Device
-  BLEDevice::init("STAR BLE Switch Tristan");
+  BLEDevice::init("STAR Tristan");
 
   // Create BLE Server
   pServer = BLEDevice::createServer();
